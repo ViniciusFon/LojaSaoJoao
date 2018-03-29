@@ -87,6 +87,26 @@ public class Usuario implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cd_tipo")
 	private Tipousuario tipousuario;
+	
+	@Column(name="ddd_celular")
+	private String dddCelular;
+	
+	@Column(name="nr_celular")
+	private String nrCelular;
+	
+	@Column(name="ddd_residencial")
+	private String dddResidencial;
+	
+	@Column(name="nr_residencial")
+	private String nrResidencial;
+	
+	@Column(name="ddd_comercial")
+	private String dddComercial;
+	
+	@Column(name="nr_comercial")
+	private String nrComercial;
+	
+	private String email;
 
 	public Usuario() {
 	}
@@ -253,6 +273,62 @@ public class Usuario implements Serializable {
 
 	public void setTipousuario(Tipousuario tipousuario) {
 		this.tipousuario = tipousuario;
+	}
+
+	public String getDddCelular() {
+		return dddCelular;
+	}
+
+	public void setDddCelular(String dddCelular) {
+		this.dddCelular = dddCelular;
+	}
+
+	public String getNrCelular() {
+		return nrCelular;
+	}
+
+	public void setNrCelular(String nrCelular) {
+		this.nrCelular = nrCelular;
+	}
+
+	public String getDddResidencial() {
+		return dddResidencial;
+	}
+
+	public void setDddResidencial(String dddResidencial) {
+		this.dddResidencial = dddResidencial;
+	}
+
+	public String getNrResidencial() {
+		return nrResidencial;
+	}
+
+	public void setNrResidencial(String nrResidencial) {
+		this.nrResidencial = nrResidencial;
+	}
+
+	public String getDddComercial() {
+		return dddComercial;
+	}
+
+	public void setDddComercial(String dddComercial) {
+		this.dddComercial = dddComercial;
+	}
+
+	public String getNrComercial() {
+		return nrComercial;
+	}
+
+	public void setNrComercial(String nrComercial) {
+		this.nrComercial = nrComercial;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

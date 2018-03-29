@@ -1,9 +1,9 @@
-package com.br.fontana.digital.response;
+package com.br.fontana.digital.request;
 
-public class UsuarioResponse {
+public class UsuarioRequest {
 
 	private Integer cdUsuario;	
-	private String tipo;
+	private Integer tipo;
 	private Integer grau;
 	private String nome;
 	private String username;
@@ -13,7 +13,8 @@ public class UsuarioResponse {
 	private String dataIniciacao;	
 	private String dataInstalacao;	
 	private String dataNasc;
-	private String situacao;
+	private Integer cdSituacao;
+	private Integer cdLoja;
 	private String email;
 	private String dddCelular;
 	private String nrCelular;
@@ -21,20 +22,16 @@ public class UsuarioResponse {
 	private String nrResidencial;
 	private String dddComercial;
 	private String nrComercial;
-	
-	
-	private LojaResponse loja;
-	
 	public Integer getCdUsuario() {
 		return cdUsuario;
 	}
 	public void setCdUsuario(Integer cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
-	public String getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 	public Integer getGrau() {
@@ -91,17 +88,17 @@ public class UsuarioResponse {
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
-	public String getSituacao() {
-		return situacao;
+	public Integer getCdSituacao() {
+		return cdSituacao;
 	}
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+	public void setCdSituacao(Integer cdSituacao) {
+		this.cdSituacao = cdSituacao;
 	}
-	public LojaResponse getLoja() {
-		return loja;
+	public Integer getCdLoja() {
+		return cdLoja;
 	}
-	public void setLoja(LojaResponse loja) {
-		this.loja = loja;
+	public void setCdLoja(Integer cdLoja) {
+		this.cdLoja = cdLoja;
 	}
 	public String getEmail() {
 		return email;
@@ -145,5 +142,7 @@ public class UsuarioResponse {
 	public void setNrComercial(String nrComercial) {
 		this.nrComercial = nrComercial;
 	}
+	
+	
 	
 }

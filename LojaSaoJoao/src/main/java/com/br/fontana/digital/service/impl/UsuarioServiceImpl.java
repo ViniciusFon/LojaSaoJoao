@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.br.fontana.digital.dao.UsuarioDAO;
 import com.br.fontana.digital.entity.Loja;
+import com.br.fontana.digital.entity.Situacao;
+import com.br.fontana.digital.entity.Tipousuario;
 import com.br.fontana.digital.entity.Usuario;
 import com.br.fontana.digital.response.LojaResponse;
 import com.br.fontana.digital.response.UsuarioResponse;
@@ -48,6 +50,96 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return response;
 	}
 	
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndGrau(Integer cdLoja, Integer cdGrau) throws Exception {
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndGrau(l, cdGrau);
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}
+	
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndMes(Integer cdLoja, Integer mes) throws Exception {
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndMonth(l, mes);
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}
+	
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndSituacao(Integer cdLoja, Integer cdSituacao) throws Exception {
+		
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		Situacao s = new Situacao();
+		s.setCdSituacao(cdSituacao);
+		
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndSituacao(l, s);
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}
+
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndTipousuario(Integer cdLoja, Integer cdTipo) throws Exception {
+		
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		Tipousuario t = new Tipousuario();
+		t.setCdTipo(cdTipo);
+		
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndTipousuario(l, t);
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}
+	
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndGrauAndSituacao(Integer cdLoja, Integer grau, Integer cdSituacao)	throws Exception {
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		Situacao s = new Situacao();
+		s.setCdSituacao(cdSituacao);
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndGrauAndSituacao(l, grau, s);
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}
+
+	@Transactional(readOnly=true)
+	public List<UsuarioResponse> findByLojaAndTipousuarioAndSituacao(Integer cdLoja, Integer cdTipo, Integer cdSituacao) throws Exception {
+		List<UsuarioResponse> response = new ArrayList<>();
+		Loja l = new Loja();
+		l.setCdLoja(cdLoja);
+		Tipousuario t = new Tipousuario();
+		t.setCdTipo(cdTipo);
+		Situacao s = new Situacao();
+		s.setCdSituacao(cdSituacao);
+		
+		
+		List<Usuario> lst = usuarioDAO.findByLojaAndTipousuarioAndSituacao(l, t, s);
+		
+		lst.forEach(e -> response.add(entityToResponse(e)));
+		
+		return response;
+	}	
+	
 	private UsuarioResponse entityToResponse(Usuario usuario){
 		UsuarioResponse response = null;
 		if(usuario!=null){
@@ -65,9 +157,18 @@ public class UsuarioServiceImpl implements UsuarioService{
 			response.setSituacao(usuario.getSituacao().getDescricao());
 			response.setTipo(usuario.getTipousuario().getDescricao());
 			response.setUsername(usuario.getUsername());
+			response.setEmail(usuario.getEmail());
+			response.setDddCelular(usuario.getDddCelular());
+			response.setNrCelular(usuario.getNrCelular());
+			response.setDddComercial(usuario.getDddComercial());
+			response.setNrComercial(usuario.getNrComercial());
+			response.setDddResidencial(usuario.getDddResidencial());
+			response.setNrResidencial(usuario.getNrResidencial());
 		}
 		
 		return response;
 	}
+
+	
 
 }

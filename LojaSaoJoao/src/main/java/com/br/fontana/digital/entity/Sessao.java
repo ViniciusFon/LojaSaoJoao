@@ -38,6 +38,8 @@ public class Sessao implements Serializable {
 	//bi-directional many-to-many association to Usuario
 	@ManyToMany(mappedBy="sessaos",fetch=FetchType.LAZY)
 	private List<Usuario> usuarios;
+	
+	private Integer grau;
 
 	public Sessao() {
 	}
@@ -88,6 +90,14 @@ public class Sessao implements Serializable {
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	public Integer getGrau() {
+		return grau;
+	}
+	
+	public void setGrau(Integer grau) {
+		this.grau = grau;
 	}
 
 }

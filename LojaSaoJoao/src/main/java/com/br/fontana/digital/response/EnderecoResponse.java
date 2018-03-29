@@ -1,27 +1,12 @@
-package com.br.fontana.digital.entity;
+package com.br.fontana.digital.response;
 
-import java.io.Serializable;
-import javax.persistence.*;
+public class EnderecoResponse {
 
-
-/**
- * The persistent class for the endereco database table.
- * 
- */
-@Entity
-@NamedQuery(name="Endereco.findAll", query="SELECT e FROM Endereco e")
-public class Endereco implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cd_endereco")
 	private Integer cdEndereco;
 
 	private String bairro;
 
-	@Column(name="cd_tipoendereco")
-	private Integer cdTipo;
+	private int cdTipo;
 
 	private String cep;
 
@@ -35,16 +20,8 @@ public class Endereco implements Serializable {
 
 	private String numero;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="cd_usuario")
-	private Usuario usuario;
-
-	public Endereco() {
-	}
-
 	public Integer getCdEndereco() {
-		return this.cdEndereco;
+		return cdEndereco;
 	}
 
 	public void setCdEndereco(Integer cdEndereco) {
@@ -52,23 +29,23 @@ public class Endereco implements Serializable {
 	}
 
 	public String getBairro() {
-		return this.bairro;
+		return bairro;
 	}
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
-	public Integer getCdTipo() {
-		return this.cdTipo;
+	public int getCdTipo() {
+		return cdTipo;
 	}
 
-	public void setCdTipo(Integer cdTipo) {
+	public void setCdTipo(int cdTipo) {
 		this.cdTipo = cdTipo;
 	}
 
 	public String getCep() {
-		return this.cep;
+		return cep;
 	}
 
 	public void setCep(String cep) {
@@ -76,7 +53,7 @@ public class Endereco implements Serializable {
 	}
 
 	public String getCidade() {
-		return this.cidade;
+		return cidade;
 	}
 
 	public void setCidade(String cidade) {
@@ -84,7 +61,7 @@ public class Endereco implements Serializable {
 	}
 
 	public String getComplemento() {
-		return this.complemento;
+		return complemento;
 	}
 
 	public void setComplemento(String complemento) {
@@ -92,7 +69,7 @@ public class Endereco implements Serializable {
 	}
 
 	public String getEstado() {
-		return this.estado;
+		return estado;
 	}
 
 	public void setEstado(String estado) {
@@ -100,7 +77,7 @@ public class Endereco implements Serializable {
 	}
 
 	public String getLogradouro() {
-		return this.logradouro;
+		return logradouro;
 	}
 
 	public void setLogradouro(String logradouro) {
@@ -108,19 +85,13 @@ public class Endereco implements Serializable {
 	}
 
 	public String getNumero() {
-		return this.numero;
+		return numero;
 	}
 
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
+	
 
 }

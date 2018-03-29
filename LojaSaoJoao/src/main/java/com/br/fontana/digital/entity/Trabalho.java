@@ -27,9 +27,9 @@ public class Trabalho implements Serializable {
 	@Column(name="data_lei")
 	private Date dataLei;
 
-	private String descricao;
+	private String titulo;
 
-	private int grau;
+	private Integer grau;
 
 	//bi-directional many-to-one association to Loja
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -68,19 +68,19 @@ public class Trabalho implements Serializable {
 		this.dataLei = dataLei;
 	}
 
-	public String getDescricao() {
-		return this.descricao;
+	public String getTitulo() {
+		return titulo;
+	}
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public int getGrau() {
+	public Integer getGrau() {
 		return this.grau;
 	}
 
-	public void setGrau(int grau) {
+	public void setGrau(Integer grau) {
 		this.grau = grau;
 	}
 

@@ -40,85 +40,23 @@ public class UserController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/lojas/{cdLoja}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByLoja(@PathVariable("cdLoja") Integer cdLoja)throws Exception {
-		
+	
+	@RequestMapping(value = "/lojas/{cdLoja}/", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List<UsuarioResponse>> findByFilter(@PathVariable("cdLoja") Integer cdLoja,
+    		@RequestParam(name="grau", required=false) Integer nrGrau,
+    		@RequestParam(name="status", required=false) Integer cdSituacao,
+    		@RequestParam(name="mesNasc", required=false) Integer mes,
+    		@RequestParam(name="tipo", required=false) Integer cdTipo)throws Exception {
+
 		if(StringUtils.isEmpty(cdLoja))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        List<UsuarioResponse> lst = usuarioService.findByLoja(cdLoja);
-
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params="grau", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByGrau(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("grau") Integer nrGrau)throws Exception {
-
-		if(StringUtils.isEmpty(cdLoja) || nrGrau==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndGrau(cdLoja, nrGrau);
+        List<UsuarioResponse> lst = usuarioService.findByFilter(cdLoja, nrGrau, cdSituacao, mes, cdTipo);
 
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params="mes", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findBirthdayMonth(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("mes") Integer nrMes)throws Exception {
 		
-		if(StringUtils.isEmpty(cdLoja) || nrMes==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndMes(cdLoja, nrMes);
-
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params="status", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByStatus(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("status")Integer cdSituacao)throws Exception {
-		
-		if(StringUtils.isEmpty(cdLoja) || cdSituacao==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndSituacao(cdLoja, cdSituacao);
-
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params={"grau","status"}, method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByGrauAndSituacao(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("grau") Integer nrGrau,@RequestParam("status") Integer cdSituacao)throws Exception {
-
-		if(StringUtils.isEmpty(cdLoja) || nrGrau==null || cdSituacao==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndGrauAndSituacao(cdLoja, nrGrau, cdSituacao);
-
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params="tipo", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByType(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("tipo") Integer cdTipo)throws Exception {
-		
-		if(StringUtils.isEmpty(cdLoja) || cdTipo==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndTipousuario(cdLoja, cdTipo);
-
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
-	
-	
-	@RequestMapping(value = "/lojas/{cdLoja}/", params={"tipo","status"}, method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<List<UsuarioResponse>> findByTypeAndStatus(@PathVariable("cdLoja") Integer cdLoja,@RequestParam("tipo") Integer cdTipo,@RequestParam("status") Integer cdSituacao)throws Exception {
-		
-		if(StringUtils.isEmpty(cdLoja) || cdTipo==null || cdSituacao==null)
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
-        List<UsuarioResponse> lst = usuarioService.findByLojaAndTipousuarioAndSituacao(cdLoja, cdTipo, cdSituacao);
-        
-        return new ResponseEntity<>(lst, HttpStatus.OK);
-    }
-	
 	
 	/*@RequestMapping(value = "/{id}/works/",method = RequestMethod.GET, produces = "application/json")
 	public void findWorksByUser(@PathVariable("id") Integer id){

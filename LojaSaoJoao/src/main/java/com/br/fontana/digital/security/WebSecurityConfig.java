@@ -21,15 +21,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/home").permitAll()
-				.antMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated().and()
+		httpSecurity.csrf().disable().authorizeRequests()
+			 // allow anonymous resource requests
+		        .antMatchers(
+		                HttpMethod.GET,		                
+		                "/",
+		                "/v2/api-docs",           // swagger
+		                "/webjars/**",            // swagger-ui webjars
+		                "/swagger-resources/**",  // swagger-ui resources
+		                "/configuration/**",      // swagger configuration
+		                "/*.html",
+		                "/favicon.ico",
+		                "/**/*.html",
+		                "/**/*.css",
+		                "/**/*.js",
+		                "/auth/**"
+		        ).permitAll();
+       
+		//		.antMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated().and()
 
 				// filtra requisições de login
-				.addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),	UsernamePasswordAuthenticationFilter.class)
+		//		.addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),	UsernamePasswordAuthenticationFilter.class)
 
 				// filtra outras requisições para verificar a presença do JWT no
 				// header
-				.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+		//		.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override

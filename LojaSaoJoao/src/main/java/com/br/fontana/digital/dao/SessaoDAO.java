@@ -13,16 +13,57 @@ import com.br.fontana.digital.entity.Sessao;
 @Repository
 public interface SessaoDAO extends JpaRepository<Sessao, Integer>{
 
+	/**
+	 * 
+	 * @param loja
+	 * @return
+	 */
 	public List<Sessao> findByLoja(Loja loja);
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param grau
+	 * @return
+	 */
 	public List<Sessao> findByLojaAndGrau(Loja loja, Integer grau);
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param dataIni
+	 * @param dataFim
+	 * @return
+	 */
 	public List<Sessao> findByLojaAndDataBetween(Loja loja, Date dataIni, Date dataFim);
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param grau
+	 * @param dataIni
+	 * @param dataFim
+	 * @return
+	 */
 	public List<Sessao> findByLojaAndGrauAndDataBetween(Loja loja, Integer grau, Date dataIni, Date dataFim);
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param tpSessao
+	 * @param dataIni
+	 * @param dataFim
+	 * @return
+	 */
 	public List<Sessao> findByLojaAndTpSessaoAndDataBetween(Loja loja, Integer tpSessao, Date dataIni, Date dataFim);
 	
+	/**
+	 * 
+	 * @param usuario
+	 * @param dataIni
+	 * @param dataFim
+	 * @return
+	 */
 	@Query("select s from Sessao s join s.usuarios u where u.cdUsuario =?1 and s.data between ?2 and ?3")
-	public List<Sessao> findByUsuarioAndData(Integer usuario, Date dataIni, Date dataFim);
+	public List<Sessao> findByUsuarioAndData(Long usuario, Date dataIni, Date dataFim);
 }

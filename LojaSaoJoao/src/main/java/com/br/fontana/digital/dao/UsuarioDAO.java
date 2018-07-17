@@ -12,12 +12,37 @@ import com.br.fontana.digital.entity.Usuario;
 
 public interface UsuarioDAO {
 	
-	public Usuario findOne(Integer cdUsuario);
+	/**
+	 * 
+	 * @param cdUsuario
+	 * @return
+	 */
+	public Usuario findOne(Long cdUsuario);
 
+	/**
+	 * 
+	 * @param userName
+	 * @return
+	 * @throws UsernameNotFoundException
+	 */
 	public Usuario findByUsername(String userName) throws UsernameNotFoundException;
 	
+	/**
+	 * 
+	 * @param loja
+	 * @return
+	 */
 	public List<Usuario> findByLoja(Loja loja);
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param grau
+	 * @param situacao
+	 * @param mes
+	 * @param tipo
+	 * @return
+	 */
 	public List<Usuario> findByFilter(Loja loja, Integer grau, Situacao situacao, Integer mes, Tipousuario tipo);
 		
 	

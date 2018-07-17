@@ -24,7 +24,7 @@ public class EnderecoServiceImpl implements EnderecoService{
 	}
 
 	@Transactional(readOnly=true)
-	public List<EnderecoResponse> findByUsuario(Integer cdUsuario) throws Exception {
+	public List<EnderecoResponse> findByUsuario(Long cdUsuario) throws Exception {
 		List<EnderecoResponse> resp = new ArrayList<>();
 		Usuario user = new Usuario();
 		user.setCdUsuario(cdUsuario);

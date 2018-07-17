@@ -34,7 +34,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Transactional(readOnly=true)
-	public UsuarioResponse findByCdUsuario(Integer cdUsuario) throws Exception {
+	public UsuarioResponse findByCdUsuario(Long cdUsuario) throws Exception {
 		return entityToResponse(usuarioDAO.findOne(cdUsuario));
 	}
 

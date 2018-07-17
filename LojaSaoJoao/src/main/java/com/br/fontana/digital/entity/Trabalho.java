@@ -17,7 +17,7 @@ public class Trabalho implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cd_trabalho")
-	private Integer cdTrabalho;
+	private Long cdTrabalho;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_inc")
@@ -44,11 +44,11 @@ public class Trabalho implements Serializable {
 	public Trabalho() {
 	}
 
-	public Integer getCdTrabalho() {
+	public Long getCdTrabalho() {
 		return this.cdTrabalho;
 	}
 
-	public void setCdTrabalho(Integer cdTrabalho) {
+	public void setCdTrabalho(Long cdTrabalho) {
 		this.cdTrabalho = cdTrabalho;
 	}
 

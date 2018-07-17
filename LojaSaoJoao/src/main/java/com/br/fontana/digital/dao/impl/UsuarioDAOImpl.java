@@ -21,7 +21,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public Usuario findOne(Integer cdUsuario) {
+	public Usuario findOne(Long cdUsuario) {
 		return entityManager.find(Usuario.class, cdUsuario);
 	}
 

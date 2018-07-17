@@ -2,5 +2,12 @@ package com.br.fontana.digital.service;
 
 public interface SessaoService {
 
-	public void find(Integer cdUsuario, String dataIni, String dataFim) throws Exception;
+	/**
+	 * 
+	 * @param cdUsuario
+	 * @param dataIni
+	 * @param dataFim
+	 * @throws Exception
+	 */
+	public void find(Long cdUsuario, String dataIni, String dataFim) throws Exception;
 }

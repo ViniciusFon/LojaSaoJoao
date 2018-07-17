@@ -34,7 +34,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<UsuarioResponse> findUser(@PathVariable Integer id) throws Exception{
+	public ResponseEntity<UsuarioResponse> findUser(@PathVariable Long id) throws Exception{
 		UsuarioResponse response = usuarioService.findByCdUsuario(id);
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
@@ -74,7 +74,7 @@ public class UserController {
 	}*/
 	
 	@RequestMapping(value = "/{id}/adresses/",method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<EnderecoResponse>>  findAdressesByUser(@PathVariable("id") Integer id) throws Exception{
+	public ResponseEntity<List<EnderecoResponse>>  findAdressesByUser(@PathVariable("id") Long id) throws Exception{
 		
 		if(StringUtils.isEmpty(id))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -90,9 +90,9 @@ public class UserController {
 	}*/
 	
 	@RequestMapping(value = "/{id}/sessions/", params={"dataIni","dataFim"}, method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity findSessionByUserAndDate(@PathVariable("id") Integer id,@RequestParam("dataIni") String dataIni, @RequestParam("dataFim") String dataFim) throws Exception{
+	public ResponseEntity findSessionByUserAndDate(@PathVariable("id") Long id,@RequestParam("dataIni") String dataIni, @RequestParam("dataFim") String dataFim) throws Exception{
 		
-		if(StringUtils.isEmpty(id) || StringUtils.isEmpty(dataIni) || StringUtils.isEmpty(dataFim))
+		if(id == null || StringUtils.isEmpty(dataIni) || StringUtils.isEmpty(dataFim))
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		
 		sessaoService.find(id, dataIni, dataFim);

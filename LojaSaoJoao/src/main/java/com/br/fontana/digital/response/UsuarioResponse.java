@@ -2,7 +2,7 @@ package com.br.fontana.digital.response;
 
 public class UsuarioResponse {
 
-	private Integer cdUsuario;	
+	private Long cdUsuario;	
 	private String tipo;
 	private Integer grau;
 	private String nome;
@@ -25,10 +25,10 @@ public class UsuarioResponse {
 	
 	private LojaResponse loja;
 	
-	public Integer getCdUsuario() {
+	public Long getCdUsuario() {
 		return cdUsuario;
 	}
-	public void setCdUsuario(Integer cdUsuario) {
+	public void setCdUsuario(Long cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
 	public String getTipo() {

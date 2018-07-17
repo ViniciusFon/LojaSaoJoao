@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cd_usuario")
-	private Integer cdUsuario;
+	private Long cdUsuario;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_elevacao")
@@ -111,11 +111,11 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Integer getCdUsuario() {
+	public Long getCdUsuario() {
 		return this.cdUsuario;
 	}
 
-	public void setCdUsuario(Integer cdUsuario) {
+	public void setCdUsuario(Long cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
 

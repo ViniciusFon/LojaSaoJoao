@@ -6,6 +6,11 @@ import com.br.fontana.digital.response.EnderecoResponse;
 
 public interface EnderecoService {
 
-	
-	public List<EnderecoResponse> findByUsuario(Integer cdUsuario) throws Exception;
+	/**
+	 * 
+	 * @param cdUsuario
+	 * @return
+	 * @throws Exception
+	 */
+	public List<EnderecoResponse> findByUsuario(Long cdUsuario) throws Exception;
 }

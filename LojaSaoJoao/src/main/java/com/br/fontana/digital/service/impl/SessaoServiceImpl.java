@@ -21,7 +21,7 @@ public class SessaoServiceImpl implements SessaoService{
 	}
 	
 	@Transactional(readOnly=true)
-	public void find(Integer cdUsuario, String dataIni, String dataFim) throws Exception{
+	public void find(Long cdUsuario, String dataIni, String dataFim) throws Exception{
 		
 		Date dt_ini = FormatUtils.parseDate(dataIni,"dd-MM-yyyy");
 		Date dt_fim = FormatUtils.parseDate(dataFim,"dd-MM-yyyy");
